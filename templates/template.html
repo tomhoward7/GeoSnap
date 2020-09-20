@@ -1,15 +1,20 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="en">
 	<head>
 		<title>GeoSnap</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="{{ url_for('static', filename='/css/main.css') }}" />
+		<link href="{{ url_for('static', filename='/css/main.css') }}" rel="stylesheet" />
 		<noscript><link rel="stylesheet" href="{{ url_for('static', filename='/css/noscript.css') }}" /></noscript>
 	</head>
 	<body class="is-preload">
 
 		<!-- Header -->
+				<button type="submit">Upload</button>
+			</form method="POST"  enctype="multipart/form-data">
+				{{ form.csrf_token }}
+				{{ form.image }}
+				<button type="submit">Upload</button>
 			<section id="header">
 				<header>
 					<h1>GeoSnap</h1>
@@ -17,8 +22,9 @@
 				</header>
 				<footer>
 					<a href="#banner" class="button style2 scrolly-middle">Select Image File</a>
-					  <label for="myfile"></label>
-  					  <input type="file" id="myfile" name="myfile"><br><br>
+
+					<form method="POST"  enctype="multipart/form-data">
+						<button type="submit">Upload</button>
 				</footer>
 
 			</section>
@@ -37,7 +43,7 @@
 
 		<!-- Feature 1 -->
 			<article id="first" class="container box style1 right">
-				<a href="#" class="image fit"><img src="{{ url_for('static', filename='images/webimages/pic01.png') }}" alt="" /></a>
+				<a href="#" class="image fit"><img src="static/images/pic01.jpg') }}"> alt="" /></a>
 				<div class="inner">
 					<header>
 						<h2>Your photo was taken here</h2>
@@ -49,7 +55,7 @@
 
 		<!-- Feature 2 -->
 			<article class="container box style1 left">
-				<a href="#" class="image fit"><img src="{{ url_for('static', filename='images/webimages/pic02.png') }}" alt="" /></a>
+				<a href="#" class="image fit"><img src="/images/pic02.png" alt="" /></a>
 				<div class="inner">
 					<header>
 						<h2>Information about your photo's location<br />

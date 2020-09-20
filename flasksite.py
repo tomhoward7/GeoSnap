@@ -21,6 +21,19 @@ class MyForm(FlaskForm):
     image = FileField('image')
 
 @app.route('/', methods=['GET', 'POST'])
+def home():
+    form = MyForm()
+
+    if form.validate_on_submit():
+        
+        filename = images.save(form.image.data)
+        return f'Filename: { filename }'
+
+    return render_template('home.html', form=form)
+
+# /index file upload test page
+
+@app.route('/index', methods=['GET', 'POST'])
 def index():
     form = MyForm()
 

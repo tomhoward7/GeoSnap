@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="en">
 	<head>
 		<title>GeoSnap</title>
 		<meta charset="utf-8" />
@@ -10,8 +10,10 @@
 	<body class="is-preload">
 
 		<!-- Header -->
-				<button type="submit">Upload</button>
-			</form>
+			</form method="POST"  enctype="multipart/form-data">
+				{{ form.csrf_token }}
+				{{ form.image }}
+				    <button type="submit">Upload</button>
 			<section id="header">
 				<header>
 					<h1>GeoSnap</h1>
