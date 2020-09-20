@@ -8,9 +8,9 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'thisisasecret'
 app.config['UPLOADED_IMAGES_DEST'] = 'uploads/images'
 
-@app.route("/")
-def home():
-    return render_template("home.html")
+#@app.route("/")
+#def home():
+#    return render_template("home.html")
 
 # File upload code
 
