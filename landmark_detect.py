@@ -8,7 +8,7 @@ os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r'ServiceAccountToken.json'
 
 client = vision.ImageAnnotatorClient()
 
-file_name = 'image3.jpg'
+file_name = 'image2.jpg'
 image_path = f'./{file_name}'
 
 # 'rb' opens a file for reading in binary format
@@ -20,14 +20,17 @@ image = vision.types.Image(content=content)
 response = client.landmark_detection(image=image)
 landmarks = response.landmark_annotations
 
-print('Location:')
+#print('Location:')
 for landmark in landmarks:
-    print("Location found!")
-    print(landmark.description)
+    #print("Location found!")
+    #print(landmark.description)
     for location in landmark.locations:
         lat_lng = location.lat_lng
-        print('Latitude {}'.format(lat_lng.latitude))
-        print('Longitude {}'.format(lat_lng.longitude))
+    #   print('Latitude {}'.format(lat_lng.latitude))
+    #   print('Longitude {}'.format(lat_lng.longitude))
 
 if response.error.message:
     raise Exception('Could not determin the location of the photo.')
+
+landmark_description = landmark.description
+landmark_coordinates = lat_lng

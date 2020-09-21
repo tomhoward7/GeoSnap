@@ -1,10 +1,11 @@
 import wikipedia
+from landmark_detect import landmark_description
 
 # Search function (1 result)
 
-landmark_description = (wikipedia.search("burj al arab", results=1))
+landmark_name = (wikipedia.search(landmark_description, results=1))
 
-print(wikipedia.summary(landmark_description, sentences=4))
+landmark_summary = (wikipedia.summary(landmark_name, sentences=4))
 
 # Suggestion function
 
