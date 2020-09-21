@@ -2,13 +2,18 @@ from flask import Flask, render_template
 from flask_wtf import FlaskForm
 from wtforms import FileField
 from flask_uploads import configure_uploads, IMAGES, UploadSet
-from flask_googlemaps import GoogleMaps  
+from flask_googlemaps import GoogleMaps
+from flask_googlemaps import Map
+from landmark_detect import landmark_lat
+from landmark_detect import landmark_long
+from landmark_detect import landmark_description
+from wikipedia_summary import landmark_summary
 
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = 'thisisasecret'
 app.config['UPLOADED_IMAGES_DEST'] = 'uploads/images'
-app.config['GOOGLEMAPS_KEY'] = "8JZ7i18MjFuM35dJHq70n3Hx4"
+app.config['GOOGLEMAPS_KEY'] = "AIzaSyD_5rBuCl_0SvNgSegLul0f1IrDUHJwwKg"
 GoogleMaps(app)
 
 #@app.route("/")
@@ -32,7 +37,7 @@ def home():
         filename = images.save(form.image.data)
         return f'Filename: { filename }'
 
-    return render_template('home.html', form=form)
+    return render_template('home.html', form=form, landmark_description=landmark_description, landmark_summary=landmark_summary)
 
 # /index file upload test page
 
@@ -48,35 +53,35 @@ def index():
     return render_template('index.html', form=form)
 
 
-@app.route("/map")
+@app.route("/mapview")
 def mapview():
     # creating a map in the view
     mymap = Map(
         identifier="view-side",
-        lat=37.4419,
-        lng=-122.1419,
-        markers=[(37.4419, -122.1419)]
+        lat=landmark_lat,
+        lng=-landmark_long,
+        markers=[(landmark_lat, landmark_long)]
     )
     sndmap = Map(
         identifier="sndmap",
-        lat=37.4419,
-        lng=-122.1419,
+        lat=landmark_lat,
+        lng=-landmark_long,
         markers=[
           {
              'icon': 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
-             'lat': 37.4419,
-             'lng': -122.1419,
+             'lat': landmark_lat,
+             'lng': landmark_long,
              'infobox': "<b>Hello World</b>"
           },
           {
              'icon': 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
-             'lat': 37.4300,
-             'lng': -122.1400,
+             'lat': landmark_lat,
+             'lng': landmark_long,
              'infobox': "<b>Hello World from other place</b>"
           }
         ]
     )
-    return render_template('example.html', mymap=mymap, sndmap=sndmap)
+    return render_template('mapview.html', mymap=mymap, sndmap=sndmap, lat=landmark_lat, long=landmark_long)
 
 if __name__ == "__main__":
     app.run(debug=True)

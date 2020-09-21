@@ -33,4 +33,5 @@ if response.error.message:
     raise Exception('Could not determin the location of the photo.')
 
 landmark_description = landmark.description
-landmark_coordinates = lat_lng
+landmark_lat = lat_lng.latitude
+landmark_long = lat_lng.longitude
