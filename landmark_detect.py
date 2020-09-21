@@ -4,8 +4,6 @@ import os
 from google.cloud import vision
 from google.cloud.vision import types
 
-# Above are the libraries that are needed
-
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r'ServiceAccountToken.json'
 
 client = vision.ImageAnnotatorClient()
