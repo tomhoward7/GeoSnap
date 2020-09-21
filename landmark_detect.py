@@ -8,8 +8,8 @@ os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r'ServiceAccountToken.json'
 
 client = vision.ImageAnnotatorClient()
 
-file_name = 'image2.jpg'
-image_path = f'./{file_name}'
+file_name = 'image3.jpg'
+image_path = f'./uploads/images/{file_name}'
 
 # 'rb' opens a file for reading in binary format
 
