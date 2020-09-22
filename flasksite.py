@@ -16,7 +16,7 @@ app.config['UPLOADED_IMAGES_DEST'] = 'uploads/images'
 app.config['GOOGLEMAPS_KEY'] = "AIzaSyD_5rBuCl_0SvNgSegLul0f1IrDUHJwwKg"
 GoogleMaps(app)
 
-app.config['MAX_CONTENT_LENGTH'] = 1024 * 1024
+app.config['MAX_CONTENT_LENGTH'] = 5000 * 5000
 app.config['UPLOAD_EXTENSIONS'] = ['.jpg', '.png', '.gif']
 app.config['UPLOAD_PATH'] = 'uploads'
 
@@ -45,20 +45,19 @@ def home():
 
 # /index file upload test page
 
-@app.route('/upload')
-def index():
-    return render_template('upload.html')
-
-@app.route('/upload', methods=['POST'])
-def upload_files():
-    uploaded_file = request.files['file']
-    filename = secure_filename(uploaded_file.filename)
-    if filename != '':
-        file_ext = os.path.splitext(filename)[1]
-        if file_ext not in app.config['UPLOAD_EXTENSIONS']:
-            abort(400)
-        uploaded_file.save(os.path.join(app.config['UPLOAD_PATH'], filename))
-    return redirect(url_for('upload'))
+@app.route('/upload')  
+def upload():  
+    return render_template("file_upload_form.html")  
+ 
+@app.route('/success', methods = ['POST'])  
+def success():  
+    if request.method == 'POST':  
+        f = request.files['file']  
+        f.save(f.filename)  
+        return render_template("success.html", name = f.filename)  
+  
+if __name__ == '__main__':  
+    app.run(debug = True)  
 
 
 @app.route("/mapview")
