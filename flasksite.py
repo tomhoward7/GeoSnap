@@ -20,28 +20,13 @@ app.config['MAX_CONTENT_LENGTH'] = 5000 * 5000
 app.config['UPLOAD_EXTENSIONS'] = ['.jpg', '.png', '.gif']
 app.config['UPLOAD_PATH'] = 'uploads'
 
-#@app.route("/")
-#def home():
-#    return render_template("home.html")
-
-# File upload code
-
-images = UploadSet('images', IMAGES)
-configure_uploads(app, images)
-
-class MyForm(FlaskForm):
-    image = FileField('image')
-
-@app.route('/', methods=['GET', 'POST'])
+@app.route("/")
 def home():
-    form = MyForm()
+    return render_template("home.html")
 
-    if form.validate_on_submit():
-        
-        filename = images.save(form.image.data)
-        return f'Filename: { filename }'
-
-    return render_template('home.html', form=form, landmark_description=landmark_description, landmark_summary=landmark_summary)
+@app.route('/results')
+def results():
+    return render_template('results.html', landmark_description=landmark_description, landmark_summary=landmark_summary)
 
 # /index file upload test page
 
