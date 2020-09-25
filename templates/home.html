@@ -16,7 +16,13 @@
 					<p>By Tom Howard</p>
 				</header>
 				<footer>
-					<a href="#banner" class="button style2 scrolly-middle">Select Image File</a>
+				<form action = "http://localhost:5000/results" method = "POST" 
+					enctype = "multipart/form-data">
+					<input type = "file" name = "file" />
+					<input type = "submit"/>
+				 </form> 
+<!----		<label class="button style2 scrolly-middle"> -->
+					</label>
 				</footer>
 
 			</section>
@@ -29,7 +35,8 @@
 				<p>A tool for geolocating photos built by <a href="https://github.com/tomhoward7">Tom Howard</a>.<br />
 				Build using Google's Vision API and written in Python using Flask</a>.</p>
 				<footer>
-					<a href="#first" class="button style2 scrolly">Upload and Locate</a>
+					<!--<a href="#first" class="button style2 scrolly">Submit and Locate</a>-->
+				</form>  
 				</footer>
 			</section>
 

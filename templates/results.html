@@ -4,8 +4,12 @@
 		<title>GeoSnap</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link href="{{ url_for('static', filename='/css/main.css') }}" rel="stylesheet" />
-		<noscript><link rel="stylesheet" href="{{ url_for('static', filename='/css/noscript.css') }}" /></noscript>
+        <link href="{{ url_for('static', filename='/css/main.css') }}" rel="stylesheet" />
+        <style>#map { height: 100%; width: 100%; }</style>
+        <noscript><link rel="stylesheet" href="{{ url_for('static', filename='/css/noscript.css') }}" /></noscript>
+            {{"decoupled-map"|googlemap_js(lat, long, markers=[(lat, long)])}}
+            {{mymap.js}}
+            {{sndmap.js}}
 	</head>
 	<body class="is-preload">
 
@@ -32,14 +36,14 @@
 
 		<!-- Feature 1 -->
 			<article id="first" class="container box style1 right">
-				<h2> Template filter decoupled with single marker </h2>
-				{{"decoupled-map"|googlemap_html(lat, long)}}
+                <h2>Your photo was taken here</h2>
+                {{"decoupled-map"|googlemap_html(lat, long)}}
+                {% set style="width:10000px;height:10000px;"%}
 				<div class="inner">
 					<header>
-						<h2>Your photo was taken here</h2>
+						<h2>Your original image</h2>
 					</header>
-					<p>*some info about the location the photo was taken at including a map on the left*
-					</p>
+					<p></p>
 				</div>
 			</article>
 

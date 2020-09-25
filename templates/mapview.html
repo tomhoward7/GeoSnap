@@ -15,7 +15,7 @@
         {{"decoupled-map"|googlemap_html(lat, long)}}
 
         <h2> Template function with multiple markers </h2>
-        {% with map=googlemap_obj("another-map", 37.4419, -122.1419, markers=[(37.4419, -122.1419), (37.4300, -122.1400)]) %}
+        {% with map=googlemap_obj("another-map", lat, long, markers=[(lat, long)]) %}
             {{map.html}}
             {{map.js}}
         {% endwith %}
