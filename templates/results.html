@@ -4,23 +4,14 @@
 		<title>GeoSnap</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-        <link href="{{ url_for('static', filename='/css/main.css') }}" rel="stylesheet" />
+		<link href="{{ url_for('static', filename='/css/main.css') }}" rel="stylesheet" />
+		<link href="{{ url_for('static', filename='/css/style.css') }}" rel="stylesheet" />
         <style>#map { height: 100%; width: 100%; }</style>
         <noscript><link rel="stylesheet" href="{{ url_for('static', filename='/css/noscript.css') }}" /></noscript>
             {{"decoupled-map"|googlemap_js(lat, long, markers=[(lat, long)])}}
-            {{mymap.js}}
-            {{sndmap.js}}
+			{{mymap.js}}
 	</head>
 	<body class="is-preload">
-
-		<!-- Header -->
-			<section id="header">
-				<header>
-					<h1>GeoSnap</h1>
-					<p>By Tom Howard</p>
-				</header>
-
-			</section>
 
 		<!-- Banner -->
 			<section id="banner">
@@ -36,12 +27,13 @@
 
 		<!-- Feature 1 -->
 			<article id="first" class="container box style1 right">
-                <h2>Your photo was taken here</h2>
-                {{"decoupled-map"|googlemap_html(lat, long)}}
-                {% set style="width:10000px;height:10000px;"%}
+				<h2>{{landmark_description}}</h2>
+				<div class="google-map">
+					{{"decoupled-map"|googlemap_html(lat, long)}}
+				</div>
 				<div class="inner">
 					<header>
-						<h2>Your original image</h2>
+						<h2>test</h2>
 					</header>
 					<p></p>
 				</div>
