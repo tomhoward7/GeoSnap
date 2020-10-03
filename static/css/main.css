@@ -1730,6 +1730,7 @@ input, select, textarea {
 
 	input[type="button"],
 	input[type="submit"],
+	input[type="file"],
 	input[type="reset"],
 	button,
 	.button {
@@ -1755,6 +1756,7 @@ input, select, textarea {
 
 		input[type="button"]:hover,
 		input[type="submit"]:hover,
+		input[type="file"]:hover,
 		input[type="reset"]:hover,
 		button:hover,
 		.button:hover {
@@ -1763,6 +1765,7 @@ input, select, textarea {
 
 		input[type="button"].style2,
 		input[type="submit"].style2,
+		input[type="file"].style2,
 		input[type="reset"].style2,
 		button.style2,
 		.button.style2 {
