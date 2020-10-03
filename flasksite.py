@@ -43,8 +43,9 @@ def uploader_file():
     mymap = Map(
         identifier="view-side",
         lat=location_hash['lat'],
-        lng=-location_hash['long'],
-        markers=[location_hash['lat'], location_hash['long']],
+        lng=location_hash['long'],
+        markers=[(location_hash['lat'], location_hash['long'])],
+        style="height:100%;width:100%;top:0;left:0;position:absolute;z-index:200;"
     )
     return render_template('results.html', landmark_description=location_hash['description'], landmark_summary=location_hash['summary'], mymap=mymap, lat=location_hash['lat'], long=location_hash['long'])
 
@@ -54,7 +55,7 @@ def mapview():
     mymap = Map(
         identifier="view-side",
         lat=landmark_lat,
-        lng=-landmark_long,
+        lng=landmark_long,
         markers=[(landmark_lat, landmark_long)]
     )
     return render_template('mapview.html', mymap=mymap, lat=landmark_lat, long=landmark_long)

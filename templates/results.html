@@ -8,7 +8,6 @@
 		<link href="{{ url_for('static', filename='/css/style.css') }}" rel="stylesheet" />
         <style>#map { height: 100%; width: 100%; }</style>
         <noscript><link rel="stylesheet" href="{{ url_for('static', filename='/css/noscript.css') }}" /></noscript>
-            {{"decoupled-map"|googlemap_js(lat, long, markers=[(lat, long)])}}
 			{{mymap.js}}
 	</head>
 	<body class="is-preload">
@@ -25,12 +24,17 @@
 				</footer>
 			</section>
 
+			<article id="first" class="container box style1 right">
+				<header style="text-align: center; font-size: 2em">
+					<h2>{{landmark_description}}</h2>
+				</header>
+			</article>
+
 		<!-- Feature 1 -->
 			<article id="first" class="container box style1 right">
-				<h2>{{landmark_description}}</h2>
-				<div class="google-map">
-					{{"decoupled-map"|googlemap_html(lat, long)}}
-				</div>
+				<div style="height: 500px"></div>
+					{{mymap.html}}
+			</div>
 				<div class="inner">
 					<header>
 						<h2>test</h2>
@@ -40,11 +44,10 @@
 			</article>
 
 		<!-- Feature 2 -->
-			<article class="container box style1 left">
-				<a href="#" class="image fit"><img src="images/webimages/bg.jpg" alt="" /></a>
+			<article class="container box style1">
 				<div class="inner">
 					<header>
-						<h2>{{landmark_description}}<br /></h2>
+						<h2>Summary<br /></h2>
 					</header>
 					<p>{{landmark_summary}}</p>
 				</div>
