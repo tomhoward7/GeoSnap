@@ -37,4 +37,6 @@ def location(file_name):
     if response.error.message:
         raise Exception('Could not determin the location of the photo.')
 
+    #os.remove({file_name})
+
     return {'description':landmark.description, 'lat': lat_lng.latitude, 'long': lat_lng.longitude, 'summary': wikipedia_summary.summary(landmark.description)}
