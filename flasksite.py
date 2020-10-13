@@ -4,11 +4,7 @@ from wtforms import FileField
 from flask_uploads import configure_uploads, IMAGES, UploadSet
 from flask_googlemaps import GoogleMaps
 from flask_googlemaps import Map
-#from landmark_detect import landmark_lat
-#from landmark_detect import landmark_long
-#from landmark_detect import landmark_description
 import landmark_detect
-#from wikipedia_summary import landmark_summary
 from werkzeug.utils import secure_filename
 from werkzeug.datastructures import  FileStorage
 import os
@@ -27,10 +23,6 @@ app.config['UPLOAD_FOLDER'] = 'uploads/images'
 def upload_file():
     return render_template("home.html")
 
-#@app.route('/upload')
-#def upload_file():
-#  return render_template('upload.html')
-
 @app.route('/results', methods = ['GET', 'POST'])
 def uploader_file():
     if request.method == 'POST':
@@ -48,17 +40,6 @@ def uploader_file():
         style="height:100%;width:100%;top:0;left:0;position:absolute;z-index:200;"
     )
     return render_template('results.html', landmark_description=location_hash['description'], landmark_summary=location_hash['summary'], mymap=mymap, lat=location_hash['lat'], long=location_hash['long'])
-
-@app.route("/mapview")
-def mapview():
-    # creating a map in the view
-    mymap = Map(
-        identifier="view-side",
-        lat=landmark_lat,
-        lng=landmark_long,
-        markers=[(landmark_lat, landmark_long)]
-    )
-    return render_template('mapview.html', mymap=mymap, lat=landmark_lat, long=landmark_long)
 
 if __name__ == "__main__":
     app.run(debug=True)
