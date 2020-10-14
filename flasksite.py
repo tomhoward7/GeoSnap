@@ -27,10 +27,8 @@ def upload_file():
 def uploader_file():
     if request.method == 'POST':
        f = request.files['file']
-       print(secure_filename(f.filename))
        f.save(os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(f.filename)))
        location_hash = landmark_detect.location(secure_filename(f.filename))
-       print(location_hash)
     # creating a map in the view
     mymap = Map(
         identifier="view-side",
